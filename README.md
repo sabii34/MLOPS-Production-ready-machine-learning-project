@@ -1,11 +1,9 @@
 # MLOPS-Production-ready-machine-learning-project
 
-Anaconda :https://anaconda.com/
-MongoDB: https://account.mongodb.com/account/login
-Data link: https://www.kaggle.com/datasets/moro23/easyvisa-dataset
+- Anaconda :https://anaconda.com/
 
-Git commands
-git add .
+- Data link: https://www.kaggle.com/datasets/moro23/easyvisa-dataset
+- MongoDB: https://account.mongodb.com/account/login
 
 git commit -m "Updated"
 
