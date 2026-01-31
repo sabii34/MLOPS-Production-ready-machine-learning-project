@@ -12,3 +12,11 @@ ARTIFACTS_DIR: str = "artifacts"
 
 MODEL_FILE_NAME: str = "model.pkl"
 
+# data ingestion related constants start with DATA INGESTION VAR NAME
+DATA_INGESTION_COLLECTION_NAME: str = "visa_data_collection"
+DATA_INGESTION_DIR_NAME: str = "data_ingestion"
+DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
+DATA_INGESTION_INGESTED_DIR: str = "ingested"
+DATA_INGESTION_TRAIN_TEST_SPLIT_RATION: float = 0.2
+
+
