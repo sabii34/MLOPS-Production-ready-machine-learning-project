@@ -1,31 +1,41 @@
-import sys
 import os
+import sys
 import pymongo
 import certifi
-from dotenv import load_dotenv
 
-from Us_Visa.exception import USvisaException
-from Us_Visa.logger import logging
-from Us_Visa.constants import DATABASE_NAME, MONGODB_URL_KEY
+from us_visa.constants import DATABASE_NAME, MONGODB_URL_KEY
+from us_visa.exception import USvisaException
+from us_visa.logger import logging
 
-load_dotenv()
 ca = certifi.where()
 
+
 class MongoDBClient:
+    """
+    Provides a MongoDB client connection.
+    - Uses TLS only for non-local URIs (e.g., MongoDB Atlas).
+    - Skips TLS for localhost/127.0.0.1 (typical local MongoDB).
+    """
+
     client = None
 
-    def __init__(self, database_name=DATABASE_NAME) -> None:
+    def __init__(self, database_name: str = DATABASE_NAME) -> None:
         try:
             if MongoDBClient.client is None:
                 mongo_db_url = os.getenv(MONGODB_URL_KEY)
-                if mongo_db_url is None:
-                    raise Exception(
-                        f"Environment key '{MONGODB_URL_KEY}' is not set."
-                    )
 
-                MongoDBClient.client = pymongo.MongoClient(
-                    mongo_db_url, tlsCAFile=ca
-                )
+                if not mongo_db_url:
+                    raise Exception(f"Environment key: {MONGODB_URL_KEY} is not set.")
+
+                # Local MongoDB (no TLS)
+                if "localhost" in mongo_db_url or "127.0.0.1" in mongo_db_url:
+                    MongoDBClient.client = pymongo.MongoClient(mongo_db_url)
+                else:
+                    # Cloud MongoDB (TLS)
+                    MongoDBClient.client = pymongo.MongoClient(
+                        mongo_db_url,
+                        tlsCAFile=ca
+                    )
 
             self.client = MongoDBClient.client
             self.database = self.client[database_name]

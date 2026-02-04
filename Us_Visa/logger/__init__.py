@@ -1,18 +1,20 @@
 import logging
 import os
-from os import path
-from from_root import from_root
-
 from datetime import datetime
-LOG_FILE_NAME = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
 
-log_dir = "logs"
-log_path = path.join(from_root(), log_dir, LOG_FILE_NAME)
-os.makedirs(path.dirname(log_path), exist_ok=True)
 
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
+
+# Project root directory
+ROOT_DIR = os.getcwd()
+
+LOG_DIR = os.path.join(ROOT_DIR, "logs")
+LOG_FILE_PATH = os.path.join(LOG_DIR, LOG_FILE)
+
+os.makedirs(LOG_DIR, exist_ok=True)
 
 logging.basicConfig(
-    filename=log_path,
-    format="[%(asctime)s] %(levelname)s - %(message)s",
+    filename=LOG_FILE_PATH,
+    format="[ %(asctime)s ] %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
 )

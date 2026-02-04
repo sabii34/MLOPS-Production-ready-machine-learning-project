@@ -19,7 +19,6 @@ TEST_FILE_NAME: str = "test.csv"
 FILE_NAME: str = "usvisa.csv"
 MODEL_FILE_NAME = "model.pkl"
 
-
 TARGET_COLUMN = "case_status"
 CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.pkl"
@@ -36,7 +35,7 @@ REGION_NAME = "us-east-1"
 """
 Data Ingestion related constant start with DATA_INGESTION VAR NAME
 """
-DATA_INGESTION_COLLECTION_NAME: str = "visa_data"
+DATA_INGESTION_COLLECTION_NAME: str = "us_visa_dataset"
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR: str = "ingested"
@@ -81,5 +80,3 @@ MODEL_PUSHER_S3_KEY = "model-registry"
 
 APP_HOST = "0.0.0.0"
 APP_PORT = 8080
-
-

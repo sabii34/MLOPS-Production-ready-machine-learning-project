@@ -1,2 +1,2 @@
-from Us_visa.componenets import data_ingestion
+from us_visa.components import data_ingestion
 
