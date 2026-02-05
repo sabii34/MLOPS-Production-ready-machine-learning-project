@@ -1,5 +1,13 @@
 import os
 from datetime import date
+from dotenv import load_dotenv
+
+load_dotenv()
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_DEFAULT_REGION = os.getenv("AWS_DEFAULT_REGION")
+MONGO_URI = os.getenv("MONGO_URI")
 
 DATABASE_NAME = "US_VISA"
 
@@ -28,7 +36,7 @@ SCHEMA_FILE_PATH = os.path.join("config", "schema.yaml")
 
 AWS_ACCESS_KEY_ID_ENV_KEY = "AWS_ACCESS_KEY_ID"
 AWS_SECRET_ACCESS_KEY_ENV_KEY = "AWS_SECRET_ACCESS_KEY"
-REGION_NAME = "us-east-1"
+REGION_NAME = "ap-southeast-2"
 
 
 
@@ -70,13 +78,12 @@ MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
 
 
-# """
-# MODEL EVALUATION related constant 
-# """
-# MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
-# MODEL_BUCKET_NAME = "usvisa-model2024"
-# MODEL_PUSHER_S3_KEY = "model-registry"
+"""
+ MODEL EVALUATION related constant 
+ """
+MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
+MODEL_BUCKET_NAME = "usvisa-model20saba"
+MODEL_PUSHER_S3_KEY = "model-registry"
 
-
-# APP_HOST = "0.0.0.0"
-# APP_PORT = 8080
+APP_HOST = "0.0.0.0"
+APP_PORT = 8080
